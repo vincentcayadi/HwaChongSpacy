@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<br lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--Website name-->
+        <title>
+            Hwa Chong Virtual Assistant
+        </title>
+        <!--End of website name-->
+        <!-- Start of CSS configuration-->
+	        <style>
+            header {
+            background-color: #f3f4ef;
+            border-style: solid;
+            border-width: 0px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-color: black;
+            }
+
+            section {
+            background-color: #ffffff;
+            border-style: solid;
+            border-width: 0px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-color: black;
+            }
+
+            br {
+            background-color: #FFFFFF;
+            }
+
+            .floatleft {
+            float: left;
+            margin: -2px 50px -5px 1px; <!--Top, Right, Bottom, Left-->
+            border: 100px solid #F5F5F5;
+            padding: 2px;
+            }
+
+            .tabBlock {
+            background-color:#CC0000;
+            border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px;
+            max-width:270px;
+            overflow:hidden;
+            display:block;
+            margin: -10px -100px -22px 35px; /Top, Right, Bottom, Left/
+            }
+
+            .clock {
+            padding:0 px;
+            }
+
+            .clocklg{
+            font-size:35px;
+            font-weight:normal;
+            color:#FFF;
+            }
+
+            input{
+            border-radius: 25px;
+            border: 2px solid;
+            padding: 13px;
+            vertical-align: bottom;
+            }
+
+            textarea{
+            border-radius: 25px;
+            border: 2px solid;
+            padding: 8px;
+            font-size: 20px;
+            vertical-align: top;
+            }
+
+            footer{
+            border-style: solid;
+            border-width: 0px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-color: black;
+            }
+
+            div{
+            background-color: #ffffff;
+            }
+
+
+        </style>
+        <!--End of CSS configuration-->
+    </head>
+    <body style="background-color: #f3f4ef;" onload="displayclock();" >
+	<table style="width:1000px">
+	<tr><th rowspan="2">
+            <!--Title-->
+            <img class="floatleft" src = "http://www.hci.edu.sg/images/HCI_logo_2.jpg" alt="Hwa Chong's logo" height="100px" width="330px"></th>
+             <th colspan="2" style="font-size:30px"> Welcome to Hwa Chong Virtual Assistant </th>
+        <!--End of title-->
+	    <tr><td height="75">
+                <table class="tabBlock" cellspacing="1" cellpadding="5" border="0">
+                    <tr><td class="clock" id="dc"></td>
+                        <td class="clocklg" id="dc_hours"></td>
+                        <td class="clocklg"> : </td>
+                        <td class="clocklg" id="dc_minutes"></td>
+                        <td class="clocklg"> : </td>
+                        <td class="clocklg" id="dc_seconds"></td>
+                        <td class="clocklg" id="dc_my"></td>
+                    </tr>
+                </table>
+                <!--Start of JavaScript for Digital Clock-->
+                <script type="text/javascript">
+                setInterval(displayclock);
+                function displayclock(){
+                    var time = new Date;
+                    var hrs = time.getHours();
+                    var min = time.getMinutes();
+                    var sec = time.getSeconds();
+                    var my = "AM";
+                    {
+                        if(hrs>12){
+                            my="PM";
+                        }
+                    }
+                    if(hrs>12){
+                        hrs=hrs-12;
+                    }
+                    if(hrs==0){
+                        hrs=12;
+                    }
+                    if(hrs<10){
+                        hrs='0'+hrs;
+                    }
+                    if(min<10){
+                        min='0'+min;
+                    }
+                    if(sec<10){
+                        sec='0'+sec;
+                    }
+                    document.getElementById('dc_seconds').innerHTML = sec;
+                    document.getElementById('dc_minutes').innerHTML = min;
+                    document.getElementById('dc_hours').innerHTML = hrs;
+                    document.getElementById('dc_my').innerHTML = my;
+                }
+                </script>
+	    </td></tr>
+            <!--End of JavaScript Digital Clock-->
+	</table>
+
+	<table style="width:2000px">
+	<tr><td colspan="3">
+                <!--Start of Assistant-->
+                <div>
+                <br>
+                <br>
+                    <form action="Program.py" method="post">
+                        <label style="font-family: Georgia; font-size: 25px; align: left;"> Enter your question:</label>
+                        <textarea style="font-size: 20px; padding: -1px -1px; font-family: Calibri;" name="Response" placeholder="e.g. How old is Hwa Chong?"></textarea>
+                        <input type="submit" name="submit" value="Submit">
+                    </form>
+                <!-- End of Assistant-->
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                </div>
+		</tr>
+	    </table>
+    <!--Bottom of the page-->
+    <footer>
+	<table>
+	<tr><td colspan="2">
+            <p  style="font-family: comic sans ms" >
+                Created by: Vincent Cayadi
+                <br>
+                      Designed by: Joshua Liow
+            </p>
+            <br>
+            <br>
+            <br>
+	</td></tr>
+	</table>
+    </footer>
+    <!--End of bottom of the page-->
+    </body>
+</html>

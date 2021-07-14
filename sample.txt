@@ -1,0 +1,7 @@
+#!/usr/bin/python3.8 
+
+import cgitb
+
+cgitb.enable()
+print("content-type: text/html\n\n")
+print("<html><body>test</body></html>")

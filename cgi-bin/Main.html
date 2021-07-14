@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--Website name-->
+        <title>
+            Hwa Chong Virtual Assistant
+        </title>
+        <!--End of website name-->
+        <!-- Start of CSS configuration-->
+        <style>
+            header {
+            background-color: #F5F5F5;
+            }
+
+            section {
+            background-color: #F5F5F5;
+            }
+
+            br {
+            background-color: #F5F5F5;
+            }
+
+            .floatleft {
+            float: left;
+            margin: -2px 50px -5px 0px; <!--Top, Right, Bottom, Left-->
+            border: 100px solid #F5F5F5;
+            padding: 2px;
+            }
+
+            .tabBlock {
+            background-color:#CC0000;
+            border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
+            max-width:290px;
+            overflow:hidden;
+            display:block;
+            margin: -10px -100px -22px 200px; <!--Top, Right, Bottom, Left-->
+            }
+
+            .clock {
+            padding:0 12px;
+            }
+
+            .clocklg{
+            font-size:35px;
+            font-weight:normal;
+            color:#FFF;
+            }
+        </style>
+        <!--End of CSS configuration-->
+    </head>
+    <body onload="displayclock();">
+        <header>
+            <!--Title-->
+                <img class="floatleft" src = "http://www.hci.edu.sg/images/HCI_logo_2.jpg" alt="Hwa Chong's logo" height="100px" width="330px">
+                <h1 align="left">
+                    Welcome to Hwa Chong Virtual Assistant
+                </h1>
+            <!--End of title-->
+            <div>
+                <table class="tabBlock" cellspacing="1" cellpadding="5" border="0">
+                    <tr><td class="clock" id="dc"></td>
+                        <td class="clocklg" id="dc_hours"></td>
+                        <td class="clocklg"> : </td>
+                        <td class="clocklg" id="dc_minutes"></td>
+                        <td class="clocklg"> : </td>
+                        <td class="clocklg" id="dc_seconds"></td>
+                        <td class="clocklg" id="dc_my"></td>
+                    </tr>
+                </table>
+                <!--Start of JavaScript for Digital Clock-->
+                <script type="text/javascript">
+                setInterval(displayclock);
+                function displayclock(){
+                    var time = new Date;
+                    var hrs = time.getHours();
+                    var min = time.getMinutes();
+                    var sec = time.getSeconds();
+                    var my = "AM";
+                    {
+                        if(hrs>12){
+                            my="PM";
+                        }
+                    }
+                    if(hrs>12){
+                        hrs=hrs-12;
+                    }
+                    if(hrs==0){
+                        hrs=12;
+                    }
+                    if(hrs<10){
+                        hrs='0'+hrs;
+                    }
+                    if(min<10){
+                        min='0'+min;
+                    }
+                    if(sec<10){
+                        sec='0'+sec;
+                    }
+                    document.getElementById('dc_seconds').innerHTML = sec;
+                    document.getElementById('dc_minutes').innerHTML = min;
+                    document.getElementById('dc_hours').innerHTML = hrs;
+                    document.getElementById('dc_my').innerHTML = my;
+                }
+                </script>
+            </div>
+            <!--End of JavaScript Digital Clock-->
+        </header>
+        <br>
+        <br>
+        <br>
+        <section>
+            <!--Start of Assistant-->
+            <div>
+                <form action="Program.py" method="post">
+                    <label style="font-family: Georgia; font-size: 25px">
+                        Enter your question:
+                    </label>
+                    <input style="font-size: 20px" type="text" id="fname" name="fname" size="25"  placeholder="e.g. How old is Hwa Chong?"/>
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </div>
+            <!-- End of Assistant-->
+            <br>
+            <br>
+            <br>
+        </section>
+    <!--Bottom of the page-->
+    <footer>
+        <div>
+            <p align="left" style="font-family: comic sans ms">
+                Created by: Vincent Cayadi
+                <br>
+                Designed by: Joshua Liow
+            </p>
+        </div>
+    </footer>
+    <!--End of bottom of the page-->
+    </body>
+</html>
